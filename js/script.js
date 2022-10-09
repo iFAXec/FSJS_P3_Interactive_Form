@@ -1,7 +1,7 @@
 const pageLoad = document.getElementById("name");
 const otherJobRole = document.getElementById("other-job-role");
 const selectJobRole = document.getElementById("title");
-const valueJobRole = document.querySelector("option"[value]);
+const valueJobRole = selectJobRole.value;
 console.log(valueJobRole);
 
 
