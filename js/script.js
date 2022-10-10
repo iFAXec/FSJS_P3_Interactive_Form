@@ -1,12 +1,6 @@
 const pageLoad = document.getElementById("name");
 const otherJobRole = document.getElementById("other-job-role");
 const selectJobRole = document.getElementById("title");
-const valueJobRole = selectJobRole.value;
-console.log(valueJobRole);
-
-
-
-
 
 
 //name field has focus when the page loads
@@ -21,22 +15,18 @@ function hideOtherField(){
 }
 hideOtherField(); 
 
-
+//Display or hide other field based on job role selected
 function hideOrDisplayOther(){  
-
-    for (let i = 0; i < valueJobRole.length; i++) {
-
-        if (valueJobRole[i] === "other") {
-            otherJobRole.style.display = "block";    
-        } else {
-            otherJobRole.style.display = "none";    
-    }    
-        
-    }
-        
+    const valueJobRole = selectJobRole.value;
+    //console.log(valueJobRole);
+        if (valueJobRole === "other") {
+                otherJobRole.style.display = "block";    
+            } else {
+                otherJobRole.style.display = "none";    
+        }    
 };
 
-console.log(hideOrDisplayOther());
+//console.log(hideOrDisplayOther());
 
 selectJobRole.addEventListener("change", hideOrDisplayOther);
  
