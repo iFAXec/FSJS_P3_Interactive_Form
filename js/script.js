@@ -3,6 +3,9 @@ const otherJobRole = document.getElementById("other-job-role");
 const selectJobRole = document.getElementById("title");
 
 
+
+
+
 //name field has focus when the page loads
 function windowLoad(){
     pageLoad.focus();
@@ -30,6 +33,29 @@ function hideOrDisplayOther(){
 
 selectJobRole.addEventListener("change", hideOrDisplayOther);
  
+
+const designElement = document.querySelectorAll("#design option");
+const designElementValue = designElement.value;
+const shirtColorElement = document.querySelectorAll("#color option");
+const shirtColorValue = shirtColorElement
+console.log(shirtColorValue);
+
+function hideColorBox(){        
+    shirtColorElement.style.display = "none";
+}
+hideColorBox();
+
+designElement.addEventListener("change", e=>{
+    shirtColorElement.style.display = "block";
+    const designValue = e.target.value;
+    if(designValue === "js puns"){
+
+
+    }
+
+
+});
+
 
 
 
