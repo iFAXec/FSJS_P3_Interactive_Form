@@ -34,26 +34,32 @@ function hideOrDisplayOther(){
 selectJobRole.addEventListener("change", hideOrDisplayOther);
  
 
-const designElement = document.querySelectorAll("#design option");
-const designElementValue = designElement.value;
-const shirtColorElement = document.querySelectorAll("#color option");
-const shirtColorValue = shirtColorElement
-console.log(shirtColorValue);
+const designSelect = document.getElementById("design");
+//console.log(designSelect);
 
-function hideColorBox(){        
-    shirtColorElement.style.display = "none";
-}
-hideColorBox();
-
-designElement.addEventListener("change", e=>{
-    shirtColorElement.style.display = "block";
-    const designValue = e.target.value;
-    if(designValue === "js puns"){
+const shirtColorOption = document.querySelectorAll("#color option");
+const shirtSelect = document.getElementById("color")
 
 
+shirtSelect.disabled = true;
+
+designSelect.addEventListener("change", e=>{
+        shirtSelect.enabled = true;
+        //const shirtCollection = shirtSelect.children;
+    for (let i = 0; i < shirtColorOption.length; i++){
+    const designSelectValue = e.target.value;   
+    const shirtTheme = shirtColorOption.getAttribute("data-theme");
+    console.log(designSelectValue);
+    console.log(shirtTheme);
+
+    if(designSelectValue === shirtTheme){
+        shirtColorOption[i].hidden = "false";
+        shirtColorOption[i].setAttribute("selected", "true")
+    }else{
+        shirtColorOption[i].hidden = "true";
+        shirtColorOption[i].setAttribute("selected", "false");
     }
-
-
+}
 });
 
 
