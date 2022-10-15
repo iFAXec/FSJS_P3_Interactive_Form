@@ -46,11 +46,11 @@ shirtSelect.disabled = true;
 designSelect.addEventListener("change", e=>{
         shirtSelect.enabled = true;
         //const shirtCollection = shirtSelect.children;
-    for (let i = 0; i < shirtColorOption.length; i++){
+    for (let i = 1; i < shirtColorOption.length; i++){
     const designSelectValue = e.target.value;   
-    const shirtTheme = shirtColorOption.getAttribute("data-theme");
-    console.log(designSelectValue);
-    console.log(shirtTheme);
+    const shirtTheme = shirtColorOption[i].getAttribute("data-theme");
+    //console.log(designSelectValue);
+    //console.log(shirtTheme);
 
     if(designSelectValue === shirtTheme){
         shirtColorOption[i].hidden = "false";
