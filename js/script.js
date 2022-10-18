@@ -36,7 +36,7 @@ selectJobRole.addEventListener("change", hideOrDisplayOther);
 
 //<------T-Shirt Info -------->
 const designSelect = document.getElementById("design");
-console.log(designSelect);
+//console.log(designSelect);
 
 const shirtColorOption = document.querySelectorAll("#color option");
 const shirtSelect = document.getElementById("color")
@@ -64,7 +64,43 @@ designSelect.addEventListener("change", e=>{
 }
 });
 
+//<-------------------register for Activities----------->
 
+const checkboxes = document.querySelectorAll(".activities input");
+//console.log(checkboxes);
+
+const activitiesField = document.querySelector(".activities");
+//console.log(activitiesField);
+
+activitiesField.addEventListener("change", (e)=>{
+
+    const clicked = e.target;
+    //console.log(clicked);
+    const clickedDataCost = clicked.getAttribute("data-cost");
+    //console.log(clickedDataCost);
+
+    for(let i = 0; i < checkboxes.length; i++){
+        const checkboxType = checkboxes[i].getAttribute("data-cost");
+        console.log(checkboxType);
+        const totalCost = document.querySelector("activities-cost");   
+       
+        if(clicked.checked){
+            
+
+
+
+        }
+
+
+
+    }
+
+
+
+}
+
+
+);
 
 
 
