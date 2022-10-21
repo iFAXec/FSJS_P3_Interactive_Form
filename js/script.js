@@ -66,11 +66,11 @@ designSelect.addEventListener("change", e=>{
 
 //<-------------------register for Activities----------->
 
-const checkboxes = document.querySelectorAll(".activities input");
-//console.log(checkboxes);
+const checkboxes = document.querySelector(".activities input");
+console.log(checkboxes);
 
 const activitiesField = document.querySelector(".activities");
-//console.log(activitiesField);
+console.log(activitiesField);
 
 
 activitiesField.addEventListener("change", (e)=>{
