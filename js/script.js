@@ -92,9 +92,6 @@ activitiesField.addEventListener("change", (e)=>{
 }
  console.log(calculateTotal());
 }
-
-
-
 );
 
 
