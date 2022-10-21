@@ -72,32 +72,27 @@ const checkboxes = document.querySelectorAll(".activities input");
 const activitiesField = document.querySelector(".activities");
 //console.log(activitiesField);
 
+
 activitiesField.addEventListener("change", (e)=>{
 
     const clicked = e.target;
-    //console.log(clicked);
     const clickedDataCost = clicked.getAttribute("data-cost");
-    //console.log(clickedDataCost);
+    const clickValue = parseInt(clickedDataCost);
+    const totalAmount = document.querySelector("activities-cost");
 
-    for(let i = 0; i < checkboxes.length; i++){
-        const checkboxType = checkboxes[i].getAttribute("data-cost");
-        console.log(checkboxType);
-        const totalCost = document.querySelector("activities-cost");   
-       
-        if(clicked.checked){
-            
-
-
-
-        }
-
-
-
-    }
-
-
-
+    function calculateTotal(){
+    let total = 0;    
+     if(clicked.checked){
+        total += clickValue;
+       console.log(total);      
+      }else{
+       total -= clickValue;
+       console.log(total);
+    }  
 }
+ console.log(calculateTotal());
+}
+
 
 
 );
