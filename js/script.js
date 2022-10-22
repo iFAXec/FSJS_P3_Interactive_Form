@@ -66,31 +66,25 @@ designSelect.addEventListener("change", e=>{
 
 //<-------------------register for Activities----------->
 
-const checkboxes = document.querySelector(".activities input");
-console.log(checkboxes);
-
 const activitiesField = document.querySelector(".activities");
-console.log(activitiesField);
-
+//console.log(activitiesField);
+let total = 0;
 
 activitiesField.addEventListener("change", (e)=>{
 
     const clicked = e.target;
     const clickedDataCost = clicked.getAttribute("data-cost");
     const clickValue = parseInt(clickedDataCost);
-    const totalAmount = document.querySelector("activities-cost");
+    const totalAmount = document.querySelector(".activities-cost");
 
-    function calculateTotal(){
-    let total = 0;    
      if(clicked.checked){
         total += clickValue;
-       console.log(total);      
+       //console.log(total);      
       }else{
        total -= clickValue;
-       console.log(total);
+       //console.log(total);
     }  
-}
- console.log(calculateTotal());
+totalAmount.innerHTML = total;
 }
 );
 
