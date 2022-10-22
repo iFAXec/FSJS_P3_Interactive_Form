@@ -4,8 +4,6 @@ const selectJobRole = document.getElementById("title");
 
 
 
-
-
 //name field has focus when the page loads
 function windowLoad(){
     pageLoad.focus();
