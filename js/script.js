@@ -76,7 +76,7 @@ activitiesField.addEventListener("change", (e)=>{
     //console.log(clicked);
     const clickedDataCost = clicked.getAttribute("data-cost");    
     const clickValue = parseInt(clickedDataCost);
-    const totalAmount = document.querySelector(".activities-cost");
+    const totalAmount = document.querySelector(".activities-cost");    
     const clickedDayAndTime = clicked.getAttribute("data-day-and-time");
     //console.log(clickedDayAndTime);
   
@@ -138,7 +138,9 @@ selectPayment.addEventListener("change", (e)=>{
 //<-----form validation----->
 const conferenceForm  = document.querySelector("form");
 const emailElement = document.getElementById("email");
-console.log(emailElement);
+const activitiesElement = document.getElementById("activities");
+const totalElement = document.getElementById("activities-cost");
+console.log(activitiesElement);
 
 
 //Name helper function
@@ -150,6 +152,7 @@ function validNameCheck() {
 }
 console.log(validNameCheck());
 
+
 //Email helper function
 function validEmailCheck(){
     const emailValue = emailElement.value;
@@ -160,16 +163,25 @@ function validEmailCheck(){
 
 console.log(validEmailCheck());
 
-//Register activity helper function
 
-function validRegisterCheck() {
-    
+//Register activity helper function
+function validRegisterCheck(){
+    const testAmountValidity = totalElement > 0;
+    return testAmountValidity;
 }
 
+console.log(validRegisterCheck());
 
 conferenceForm.addEventListener("submit", (e)=>{
     e.preventDefault();
-    validNameCheck();
-    validEmailCheck();
-
+    
+    if(!validNameCheck()){
+        e.preventDefault();
+    }else if(!validEmailCheck()){
+        e.preventDefault();
+    }else if(!validRegisterCheck()){
+        e.preventDefault;
+    }else{
+        console.log("form submitted");
+    }
 });
