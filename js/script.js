@@ -109,7 +109,7 @@ for(let i = 0; i < checkboxes.length; i++){
 
 //Make credit card as a default drop down item
 const paymentOptions = document.getElementById("payment")[1];
-//console.log(paymentOptions);
+console.log(paymentOptions);
 paymentOptions.selected = "true";
 
 selectPayment.addEventListener("change", (e)=>{
@@ -172,6 +172,34 @@ function validRegisterCheck(){
 
 console.log(validRegisterCheck());
 
+
+//Credit card payment helper function
+const creditCardNumber = document.querySelector("#cc-num");
+const zipCode = document.querySelector("#zip");
+const cVVNumber = document.querySelector("#cvv");
+
+
+function validCreditCardCCheck(){   
+    const creditCardValue = creditCardNumber.value;
+    const testCreditCard = /^[0-9]{13,16}$/.test(creditCardValue);
+    return testCreditCard;
+}
+console.log(validCreditCardCCheck());
+
+function validZipCodeCheck(){
+    const zipCodeValue = zipCode.value;
+    const testZipCode = /^\d{5}$/.test(zipCodeValue);
+    return testZipCode;
+}
+console.log(validZipCodeCheck());
+
+function validCVVCheck(){
+    const cVVValue = cVVNumber.value;
+    const testCVV = /^\d{3}$/.test(cVVValue);
+    return testCVV;
+}
+console.log(validCVVCheck());
+
 conferenceForm.addEventListener("submit", (e)=>{
     e.preventDefault();
     
@@ -181,7 +209,14 @@ conferenceForm.addEventListener("submit", (e)=>{
         e.preventDefault();
     }else if(!validRegisterCheck()){
         e.preventDefault;
-    }else{
-        console.log("form submitted");
+    }else if(!validCreditCardCCheck()){
+        e.preventDefault;
+    }else if(!validZipCodeCheck()){
+        e.preventDefault;
+    }else if(validCVVCheck()){
+        e.preventDefault;
+    }else {
+        console.log("form submitted successfully")
+
     }
 });
