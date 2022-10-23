@@ -1,4 +1,4 @@
-const pageLoad = document.getElementById("name");
+const nameElement = document.getElementById("name");
 const otherJobRole = document.getElementById("other-job-role");
 const selectJobRole = document.getElementById("title");
 
@@ -6,7 +6,7 @@ const selectJobRole = document.getElementById("title");
 
 //name field has focus when the page loads
 function windowLoad(){
-    pageLoad.focus();
+    nameElement.focus();
 }
 windowLoad();
 
@@ -73,12 +73,12 @@ let total = 0;
 activitiesField.addEventListener("change", (e)=>{
 
     const clicked = e.target;
-    console.log(clicked);
+    //console.log(clicked);
     const clickedDataCost = clicked.getAttribute("data-cost");    
     const clickValue = parseInt(clickedDataCost);
     const totalAmount = document.querySelector(".activities-cost");
     const clickedDayAndTime = clicked.getAttribute("data-day-and-time");
-    console.log(clickedDayAndTime);
+    //console.log(clickedDayAndTime);
   
 
      if(clicked.checked){
@@ -94,7 +94,7 @@ totalAmount.innerHTML = total;
 //Loop through all the checkboxes to get the date ad time attribute and compare with click attribute
 for(let i = 0; i < checkboxes.length; i++){
     const checkboxDayAndTime = checkboxes[i].getAttribute("data-day-and-time");
-    console.log(checkboxDayAndTime);
+    //console.log(checkboxDayAndTime);
     if(clickedDayAndTime === checkboxDayAndTime && clickedDayAndTime !== checkboxes[i]){
         if(clicked.checked){
             checkboxes[i].disabled = true;
@@ -105,7 +105,7 @@ for(let i = 0; i < checkboxes.length; i++){
 
 //<-----Payment info----->
  const selectPayment = document.querySelector(".payment-methods");
-console.log(selectPayment);
+//console.log(selectPayment);
 
 //Make credit card as a default drop down item
 const paymentOptions = document.getElementById("payment")[1];
@@ -132,4 +132,44 @@ selectPayment.addEventListener("change", (e)=>{
         paypalInfo.hidden= true;
         bitcoinInfo.hidden = true;
     }    
+});
+
+
+//<-----form validation----->
+const conferenceForm  = document.querySelector("form");
+const emailElement = document.getElementById("email");
+console.log(emailElement);
+
+
+//Name helper function
+function validNameCheck() {
+    const nameValue = nameElement.value;
+    console.log(nameValue);
+    const testNameValidity = /^[a-zA-Z]+ ?[a-zA-Z]*? ?[a-zA-Z]*?$/.test(nameValue);
+    return testNameValidity;     
+}
+console.log(validNameCheck());
+
+//Email helper function
+function validEmailCheck(){
+    const emailValue = emailElement.value;
+    console.log(emailValue);
+    const testEmailValidity = /^[^@.]+@[^@.]+\.[a-z]+$/i.test(emailValue);
+    return testEmailValidity;
+}
+
+console.log(validEmailCheck());
+
+//Register activity helper function
+
+function validRegisterCheck() {
+    
+}
+
+
+conferenceForm.addEventListener("submit", (e)=>{
+    e.preventDefault();
+    validNameCheck();
+    validEmailCheck();
+
 });
