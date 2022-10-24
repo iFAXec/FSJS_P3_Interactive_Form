@@ -109,7 +109,6 @@ for(let i = 0; i < checkboxes.length; i++){
 
 //Make credit card as a default drop down item
 const paymentOptions = document.getElementById("payment")[1];
-console.log(paymentOptions);
 paymentOptions.selected = "true";
 
 selectPayment.addEventListener("change", (e)=>{
@@ -140,17 +139,22 @@ const conferenceForm  = document.querySelector("form");
 const emailElement = document.getElementById("email");
 const activitiesElement = document.getElementById("activities");
 const totalElement = document.getElementById("activities-cost");
-console.log(activitiesElement);
+//console.log(activitiesElement);
 
 
 //Name helper function
 function validNameCheck() {
     const nameValue = nameElement.value;
-    console.log(nameValue);
+    //console.log(nameValue);
     const testNameValidity = /^[a-zA-Z]+ ?[a-zA-Z]*? ?[a-zA-Z]*?$/.test(nameValue);
-    return testNameValidity;     
+    if(testNameValidity){
+        validationPass(nameElement);
+    }else{
+        validationFail(nameElement);
+    }
+    
 }
-console.log(validNameCheck());
+//console.log(validNameCheck());
 
 
 //Email helper function
@@ -161,7 +165,7 @@ function validEmailCheck(){
     return testEmailValidity;
 }
 
-console.log(validEmailCheck());
+//console.log(validEmailCheck());
 
 
 //Register activity helper function
@@ -170,7 +174,7 @@ function validRegisterCheck(){
     return testAmountValidity;
 }
 
-console.log(validRegisterCheck());
+//console.log(validRegisterCheck());
 
 
 //Credit card payment helper function
@@ -179,44 +183,66 @@ const zipCode = document.querySelector("#zip");
 const cVVNumber = document.querySelector("#cvv");
 
 
-function validCreditCardCCheck(){   
+function validCreditCardCheck(){   
     const creditCardValue = creditCardNumber.value;
     const testCreditCard = /^[0-9]{13,16}$/.test(creditCardValue);
     return testCreditCard;
 }
-console.log(validCreditCardCCheck());
+//console.log(validCreditCardCheck());
 
 function validZipCodeCheck(){
     const zipCodeValue = zipCode.value;
     const testZipCode = /^\d{5}$/.test(zipCodeValue);
     return testZipCode;
 }
-console.log(validZipCodeCheck());
+//console.log(validZipCodeCheck());
 
 function validCVVCheck(){
     const cVVValue = cVVNumber.value;
     const testCVV = /^\d{3}$/.test(cVVValue);
     return testCVV;
 }
-console.log(validCVVCheck());
+//console.log(validCVVCheck());
+
+//<----Form Accessibility --->
+
+//validation pass helper fuction and loads on page load
+window.onload = function validationPass(element){
+    element.parentElement.classList.add(".valid");
+    element.parentElement.classList.remove(".not-valid")
+    element.parentElement.lastElementChild.style.display = "none";
+}
+
+//validation fail helper function and loads on page load
+window.onload = function validationFail(element){
+    element.parentElement.classList.add(".not-valid");
+    element.parentElement.classList.remove(".valid");
+    element.parentElement.lastElementChild.style.display = "block";
+}
+
+
 
 conferenceForm.addEventListener("submit", (e)=>{
     e.preventDefault();
     
     if(!validNameCheck()){
         e.preventDefault();
-    }else if(!validEmailCheck()){
-        e.preventDefault();
-    }else if(!validRegisterCheck()){
-        e.preventDefault;
-    }else if(!validCreditCardCCheck()){
-        e.preventDefault;
-    }else if(!validZipCodeCheck()){
-        e.preventDefault;
-    }else if(validCVVCheck()){
-        e.preventDefault;
-    }else {
-        console.log("form submitted successfully")
-
     }
+    if(!validEmailCheck()){
+        e.preventDefault();
+    }
+    if(!validRegisterCheck()){
+        e.preventDefault;
+    }
+    if(!validCreditCardCheck()){
+        e.preventDefault;
+    }
+    if(!validZipCodeCheck()){
+        e.preventDefault;
+    }
+    if(!validCVVCheck()){
+        e.preventDefault;
+    }
+
+    
 });
