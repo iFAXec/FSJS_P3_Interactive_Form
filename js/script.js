@@ -104,15 +104,14 @@ for(let i = 0; i < checkboxes.length; i++){
 }}});
 
 //<----Tab functionality on checkboxes ---->
-const activitiesBox = document.getElementById("activities-box");
-console.log(activitiesBox)
-
-activitiesBox.addEventListener("focus", () => {
-    checkboxes.parentElement.classList.add(".focus")    
-});
-
-activitiesBox.addEventListener("blur", () => {
-    checkboxes.parentElement.classList.remove(".focus")
+checkboxes.forEach(checkbox => {
+    checkbox.addEventListener("focus", (e) => {
+        e.target.parentElement.classList.add("focus");    
+    });
+    
+    checkbox.addEventListener("blur", (e) => {
+        e.target.parentElement.classList.remove("focus");
+    });
 });
 
 
