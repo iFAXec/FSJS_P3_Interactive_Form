@@ -103,6 +103,19 @@ for(let i = 0; i < checkboxes.length; i++){
     }
 }}});
 
+//<----Tab functionality on checkboxes ---->
+const activitiesBox = document.getElementById("activities-box");
+console.log(activitiesBox)
+
+activitiesBox.addEventListener("focus", () => {
+    checkboxes.parentElement.classList.add(".focus")    
+});
+
+activitiesBox.addEventListener("blur", () => {
+    checkboxes.parentElement.classList.remove(".focus")
+});
+
+
 //<-----Payment info----->
  const selectPayment = document.querySelector(".payment-methods");
 //console.log(selectPayment);
@@ -142,6 +155,24 @@ const totalElement = document.getElementById("activities-cost");
 //console.log(activitiesElement);
 
 
+
+//<----Form Accessibility --->
+//validation pass helper fuction and loads on page load
+function validationPass(element){
+    element.parentElement.classList.add(".valid");
+    element.parentElement.classList.remove(".not-valid")
+    element.parentElement.lastElementChild.style.display = "none";
+}
+
+//validation fail helper function and loads on page load
+function validationFail(element){
+    element.parentElement.classList.add(".not-valid");    
+    element.parentElement.classList.remove(".valid");
+    element.parentElement.lastElementChild.style.display = "block";
+}
+
+
+//<-----form validation contd----->
 //Name helper function
 function validNameCheck() {
     const nameValue = nameElement.value;
@@ -160,9 +191,14 @@ function validNameCheck() {
 //Email helper function
 function validEmailCheck(){
     const emailValue = emailElement.value;
-    console.log(emailValue);
+    //console.log(emailValue);
     const testEmailValidity = /^[^@.]+@[^@.]+\.[a-z]+$/i.test(emailValue);
-    return testEmailValidity;
+
+    if(testEmailValidity){
+        validationPass(emailElement);
+    }else{
+        validationFail(emailElement);
+    }    
 }
 
 //console.log(validEmailCheck());
@@ -171,7 +207,11 @@ function validEmailCheck(){
 //Register activity helper function
 function validRegisterCheck(){
     const testAmountValidity = totalElement > 0;
-    return testAmountValidity;
+    if(testAmountValidity) {
+        validationPass(totalElement);
+  }else{
+        validationFail(totalElement);
+  }
 }
 
 //console.log(validRegisterCheck());
@@ -204,24 +244,6 @@ function validCVVCheck(){
 }
 //console.log(validCVVCheck());
 
-//<----Form Accessibility --->
-
-//validation pass helper fuction and loads on page load
-window.onload = function validationPass(element){
-    element.parentElement.classList.add(".valid");
-    element.parentElement.classList.remove(".not-valid")
-    element.parentElement.lastElementChild.style.display = "none";
-}
-
-//validation fail helper function and loads on page load
-window.onload = function validationFail(element){
-    element.parentElement.classList.add(".not-valid");
-    element.parentElement.classList.remove(".valid");
-    element.parentElement.lastElementChild.style.display = "block";
-}
-
-
-
 conferenceForm.addEventListener("submit", (e)=>{
     e.preventDefault();
     
@@ -243,6 +265,4 @@ conferenceForm.addEventListener("submit", (e)=>{
     if(!validCVVCheck()){
         e.preventDefault;
     }
-
-    
 });
