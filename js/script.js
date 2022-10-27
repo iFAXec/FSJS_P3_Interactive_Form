@@ -43,19 +43,20 @@ console.log(shirtColorOption);
 shirtSelect.disabled = true;
 
 designSelect.addEventListener("change", e=>{
-        shirtSelect.disabled = false;      
+        shirtSelect.disabled = false;    
+        const designSelectValue = e.target.value;     
+        if(designSelectValue === "js puns"){
+            shirtColorOption[1].selected = true;
+        }else if( designSelectValue === "heart js"){
+            shirtColorOption[4].selected = true;
+        }
     for (let i = 1; i < shirtColorOption.length; i++){
-    const designSelectValue = e.target.value;   
     const shirtTheme = shirtColorOption[i].getAttribute("data-theme");
-    console.log(designSelectValue);
-    // console.log(shirtTheme);
-
+   // console.log(shirtTheme);
     if(designSelectValue === shirtTheme){
-        shirtColorOption[i].hidden = false;
-        shirtColorOption[i].setAttribute("selected", true)
+        shirtColorOption[i].hidden = false;      
     }else{
-        shirtColorOption[i].hidden = true;
-        shirtColorOption[i].setAttribute("selected", false);
+        shirtColorOption[i].hidden = true;       
     }
 }
 });
