@@ -34,23 +34,21 @@ selectJobRole.addEventListener("change", hideOrDisplayOther);
 
 //<------T-Shirt Info -------->
 const designSelect = document.getElementById("design");
-//console.log(designSelect);
-
-const shirtColorOption = document.querySelectorAll("#color option");
+console.log(designSelect);
 const shirtSelect = document.getElementById("color")
-
+console.log(shirtSelect);
+const shirtColorOption = document.querySelectorAll("#color option");
+console.log(shirtColorOption);
 
 shirtSelect.disabled = true;
 
 designSelect.addEventListener("change", e=>{
-        shirtSelect.disabled = false;
-        const shirtCollection = shirtSelect.children;
-        //console.log(shirtCollection);
+        shirtSelect.disabled = false;      
     for (let i = 1; i < shirtColorOption.length; i++){
     const designSelectValue = e.target.value;   
     const shirtTheme = shirtColorOption[i].getAttribute("data-theme");
-    //console.log(designSelectValue);
-    //console.log(shirtTheme);
+    console.log(designSelectValue);
+    // console.log(shirtTheme);
 
     if(designSelectValue === shirtTheme){
         shirtColorOption[i].hidden = false;
@@ -182,7 +180,7 @@ function validNameCheck() {
     }else{
         validationFail(nameElement);
     }
-    
+    return testNameValidity;
 }
 //console.log(validNameCheck());
 
@@ -198,6 +196,7 @@ function validEmailCheck(){
     }else{
         validationFail(emailElement);
     }    
+    return testEmailValidity;
 }
 
 //console.log(validEmailCheck());
@@ -211,6 +210,7 @@ function validRegisterCheck(){
   }else{
         validationFail(totalElement);
   }
+  return testAmountValidity;
 }
 
 //console.log(validRegisterCheck());
