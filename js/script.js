@@ -122,12 +122,16 @@ checkboxes.forEach(checkbox => {
 
 //Make credit card as a default drop down item
 const paymentOptions = document.getElementById("payment")[1];
+const paypalInfo = document.getElementById("paypal");
+const bitcoinInfo = document.getElementById("bitcoin");
 paymentOptions.selected = "true";
+paypalInfo.hidden = true;
+bitcoinInfo.hidden = true;
+
 
 selectPayment.addEventListener("change", (e)=>{
     const creditCardInfo = document.getElementById("credit-card");
-    const paypalInfo = document.getElementById("paypal");
-    const bitcoinInfo = document.getElementById("bitcoin");
+
     const paymentValue = e.target.value;
     //console.log(paymentValue);
 
