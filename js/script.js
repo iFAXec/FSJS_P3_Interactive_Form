@@ -77,6 +77,7 @@ activitiesField.addEventListener("change", (e)=>{
     const clickValue = parseInt(clickedDataCost);
     const totalAmount = document.querySelector(".activities-cost");    
     const clickedDayAndTime = clicked.getAttribute("data-day-and-time");
+  
     //console.log(clickedDayAndTime);
        if(clicked.checked){
         total += clickValue;
@@ -90,17 +91,17 @@ totalAmount.innerHTML = `Total: $${total}`;
 
 //Prevent users from selecting activity that occure at the same time
 //Loop through all the checkboxes to get the date ad time attribute and compare with click attribute
-for(let i = 0; i < checkboxes.length; i++){
-    const checkboxDayAndTime = checkboxes[i].getAttribute("data-day-and-time");
-    //console.log(checkboxDayAndTime);
-    if(clickedDayAndTime === checkboxDayAndTime && clickedDayAndTime !== checkboxes[i]){
-        if(clicked.checked){
-            checkboxes[i].disabled = true;
-        }else{
-        checkboxes[i].disabled = false;
-    }
-}}
-
+checkboxes.forEach(checkbox => {
+    const checkboxDayAndTime = checkbox.getAttribute("data-day-and-time");
+      if(clicked.checked && clicked !== checkbox && checkboxDayAndTime === clickedDayAndTime ){
+        checkbox.disabled = true;
+        checkbox.parentElement.classList.add("disabled");
+    } 
+    if(!clicked.clicked && checkbox.disabled && clickedDayAndTime === checkboxDayAndTime ){
+        checkbox.disabled = false;
+        checkbox.parentElement.classList.remove("disbaled");
+    }    
+});
 });
 
 
@@ -163,15 +164,15 @@ const totalElement = document.getElementById("activities-cost");
 //<----Form Accessibility --->
 //validation pass helper fuction and loads on page load
 function validationPass(element){
-    element.parentElement.classList.add(".valid");
-    element.parentElement.classList.remove(".not-valid")
+    element.parentElement.classList.add("valid");
+    element.parentElement.classList.remove("not-valid")
     element.parentElement.lastElementChild.style.display = "none";
 }
 
 //validation fail helper function and loads on page load
 function validationFail(element){
-    element.parentElement.classList.add(".not-valid");    
-    element.parentElement.classList.remove(".valid");
+    element.parentElement.classList.add("not-valid");    
+    element.parentElement.classList.remove("valid");
     element.parentElement.lastElementChild.style.display = "block";
 }
 
