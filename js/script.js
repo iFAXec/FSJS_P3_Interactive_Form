@@ -34,11 +34,11 @@ selectJobRole.addEventListener("change", hideOrDisplayOther);
 
 //<------T-Shirt Info -------->
 const designSelect = document.getElementById("design");
-console.log(designSelect);
+//console.log(designSelect);
 const shirtSelect = document.getElementById("color")
-console.log(shirtSelect);
+//console.log(shirtSelect);
 const shirtColorOption = document.querySelectorAll("#color option");
-console.log(shirtColorOption);
+//console.log(shirtColorOption);
 
 shirtSelect.disabled = true;
 
@@ -64,9 +64,9 @@ designSelect.addEventListener("change", e=>{
 //<-------------------register for Activities----------->
 
 const checkboxes = document.querySelectorAll("input[type='checkbox']");
-//console.log(checkboxes);
+console.log(checkboxes);
 const activitiesField = document.querySelector(".activities");
-//console.log(activitiesField);
+console.log(activitiesField);
 let total = 0;
 
 activitiesField.addEventListener("change", (e)=>{
@@ -78,9 +78,7 @@ activitiesField.addEventListener("change", (e)=>{
     const totalAmount = document.querySelector(".activities-cost");    
     const clickedDayAndTime = clicked.getAttribute("data-day-and-time");
     //console.log(clickedDayAndTime);
-  
-
-     if(clicked.checked){
+       if(clicked.checked){
         total += clickValue;
        //console.log(total);      
       }else{
@@ -88,8 +86,9 @@ activitiesField.addEventListener("change", (e)=>{
        //console.log(total);
     };  
 
-totalAmount.innerHTML = total;
+totalAmount.innerHTML = `Total: $${total}`;
 
+//Prevent users from selecting activity that occure at the same time
 //Loop through all the checkboxes to get the date ad time attribute and compare with click attribute
 for(let i = 0; i < checkboxes.length; i++){
     const checkboxDayAndTime = checkboxes[i].getAttribute("data-day-and-time");
@@ -100,7 +99,10 @@ for(let i = 0; i < checkboxes.length; i++){
         }else{
         checkboxes[i].disabled = false;
     }
-}}});
+}}
+
+});
+
 
 //<----Tab functionality on checkboxes ---->
 checkboxes.forEach(checkbox => {
