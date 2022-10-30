@@ -160,23 +160,6 @@ const totalElement = document.getElementById("activities-cost");
 //console.log(activitiesElement);
 
 
-
-//<----Form Accessibility --->
-//validation pass helper fuction and loads on page load
-function validationPass(element){
-    element.parentElement.classList.add("valid");
-    element.parentElement.classList.remove("not-valid")
-    element.parentElement.lastElementChild.style.display = "none";
-}
-
-//validation fail helper function and loads on page load
-function validationFail(element){
-    element.parentElement.classList.add("not-valid");    
-    element.parentElement.classList.remove("valid");
-    element.parentElement.lastElementChild.style.display = "block";
-}
-
-
 //<-----form validation contd----->
 //Name helper function
 function validNameCheck() {
@@ -233,6 +216,11 @@ const cVVNumber = document.querySelector("#cvv");
 function validCreditCardCheck(){   
     const creditCardValue = creditCardNumber.value;
     const testCreditCard = /^[0-9]{13,16}$/.test(creditCardValue);
+    if(testCreditCard){
+        validationPass(creditCardNumber);
+    } else{
+        validationFail(creditCardNumber);
+    }
     return testCreditCard;
 }
 //console.log(validCreditCardCheck());
@@ -240,6 +228,13 @@ function validCreditCardCheck(){
 function validZipCodeCheck(){
     const zipCodeValue = zipCode.value;
     const testZipCode = /^\d{5}$/.test(zipCodeValue);
+    if(testZipCode){
+        validationPass(zipCode);
+    }else{
+
+        validationFail(zipCode);
+    }
+
     return testZipCode;
 }
 //console.log(validZipCodeCheck());
@@ -247,9 +242,35 @@ function validZipCodeCheck(){
 function validCVVCheck(){
     const cVVValue = cVVNumber.value;
     const testCVV = /^\d{3}$/.test(cVVValue);
+    if(testCVV){
+        validationPass(cVVNumber);
+    }else{
+        validationFail(cVVNumber);
+    }
     return testCVV;
 }
 //console.log(validCVVCheck());
+
+
+//<----Form Accessibility --->
+//validation pass helper fuction and loads on page load
+function validationPass(element){
+    element.parentElement.classList.add("valid");
+    element.parentElement.classList.remove("not-valid")
+    element.parentElement.lastElementChild.style.display = "none";
+}
+
+//validation fail helper function and loads on page load
+function validationFail(element){
+    element.parentElement.classList.add("not-valid");    
+    element.parentElement.classList.remove("valid");
+    element.parentElement.lastElementChild.style.display = "block";
+}
+//checks for name in the name field and flags a green tick
+nameElement.addEventListener("keyup", validNameCheck);
+
+//checks for email in the field and flags with green tick
+emailElement.addEventListener("keyup", validEmailCheck);
 
 conferenceForm.addEventListener("submit", (e)=>{
     e.preventDefault();
