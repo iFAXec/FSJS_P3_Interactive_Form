@@ -266,11 +266,10 @@ function validationFail(element){
     element.parentElement.classList.remove("valid");
     element.parentElement.lastElementChild.style.display = "block";
 }
-//checks for name in the name field and flags a green tick
+//checks for input in the field and flags a green tick when correct
 nameElement.addEventListener("keyup", validNameCheck);
-
-//checks for email in the field and flags with green tick
 emailElement.addEventListener("keyup", validEmailCheck);
+
 
 conferenceForm.addEventListener("submit", (e)=>{
     e.preventDefault();
