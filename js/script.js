@@ -195,13 +195,13 @@ function validEmailCheck(){
 
 //Register activity helper function
 function validRegisterCheck(){
-    const testAmountValidity = totalElement > 0;
-    if(testAmountValidity) {
-        validationPass(totalElement);
+    if(checkboxes.checked) {
+        validationPass(activitiesField);
+        
   }else{
-        validationFail(totalElement);
+        validationFail(activitiesField);
   }
-  return testAmountValidity;
+  return activitiesField;
 }
 
 //console.log(validRegisterCheck());
