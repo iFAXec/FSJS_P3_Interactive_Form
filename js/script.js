@@ -194,14 +194,14 @@ function validEmailCheck(){
 
 
 //Register activity helper function
-function validRegisterCheck(){
-    if(checkboxes.checked) {
+function validRegisterCheck(){    
+    if(total > 0) {
         validationPass(activitiesField);
         
   }else{
         validationFail(activitiesField);
   }
-  return activitiesField;
+  
 }
 
 //console.log(validRegisterCheck());
@@ -270,6 +270,11 @@ function validationFail(element){
 nameElement.addEventListener("keyup", validNameCheck);
 emailElement.addEventListener("keyup", validEmailCheck);
 
+const creditCardOption = document.getElementById("payment")[1];
+const creditCardSelected = creditCardOption.value;
+
+console.log(creditCardOption);
+console.log(creditCardSelected);
 
 conferenceForm.addEventListener("submit", (e)=>{
     e.preventDefault();
@@ -281,15 +286,19 @@ conferenceForm.addEventListener("submit", (e)=>{
         e.preventDefault();
     }
     if(!validRegisterCheck()){
-        e.preventDefault;
+        e.preventDefault();
     }
+
+if(creditCardSelected === "credit-card"){
     if(!validCreditCardCheck()){
-        e.preventDefault;
+        e.preventDefault();
     }
     if(!validZipCodeCheck()){
-        e.preventDefault;
+        e.preventDefault();
     }
     if(!validCVVCheck()){
-        e.preventDefault;
+        e.preventDefault();
     }
+}
+
 });
