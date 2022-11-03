@@ -268,14 +268,17 @@ function validationFail(element){
 nameElement.addEventListener("keyup", validNameCheck);
 emailElement.addEventListener("keyup", validEmailCheck);
 
-const creditCardOption = document.getElementById("payment")[1];
-const creditCardSelected = creditCardOption.value;
+const creditCardOption = document.getElementById("payment");
+
 
 console.log(creditCardOption);
-console.log(creditCardSelected);
+
 
 conferenceForm.addEventListener("submit", (e)=>{
-    e.preventDefault();
+    const creditCardSelected = creditCardOption.value;
+    console.log(creditCardSelected);
+
+
     
     if(!validNameCheck()){
         e.preventDefault();
@@ -296,7 +299,5 @@ if(creditCardSelected === "credit-card"){
     if(!validCVVCheck()){
         e.preventDefault();
     }
-}else{
-    e.preventDefault();
 }
 });
