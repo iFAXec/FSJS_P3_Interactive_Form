@@ -196,12 +196,10 @@ function validEmailCheck(){
 //Register activity helper function
 function validRegisterCheck(){    
     if(total > 0) {
-        validationPass(activitiesField);
-        
+        validationPass(activitiesField);        
   }else{
         validationFail(activitiesField);
-  }
-  
+}  
 }
 
 //console.log(validRegisterCheck());
@@ -288,7 +286,6 @@ conferenceForm.addEventListener("submit", (e)=>{
     if(!validRegisterCheck()){
         e.preventDefault();
     }
-
 if(creditCardSelected === "credit-card"){
     if(!validCreditCardCheck()){
         e.preventDefault();
@@ -299,6 +296,7 @@ if(creditCardSelected === "credit-card"){
     if(!validCVVCheck()){
         e.preventDefault();
     }
+}else{
+    e.preventDefault();
 }
-
 });
