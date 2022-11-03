@@ -277,8 +277,6 @@ console.log(creditCardOption);
 conferenceForm.addEventListener("submit", (e)=>{
     const creditCardSelected = creditCardOption.value;
     console.log(creditCardSelected);
-
-
     
     if(!validNameCheck()){
         e.preventDefault();
