@@ -200,6 +200,7 @@ function validRegisterCheck(){
   }else{
         validationFail(activitiesField);
 }  
+return total > 0;
 }
 
 //console.log(validRegisterCheck());
