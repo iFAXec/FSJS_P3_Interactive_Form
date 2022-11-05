@@ -281,19 +281,24 @@ conferenceForm.addEventListener("submit", (e)=>{
     if(!validNameCheck()){
         e.preventDefault();
     }
+
     if(!validEmailCheck()){
         e.preventDefault();
     }
-    if(!validRegisterCheck()){
+
+    if(!validRegisterCheck()){   
         e.preventDefault();
     }
+
 if(creditCardSelected === "credit-card"){
     if(!validCreditCardCheck()){
         e.preventDefault();
     }
+
     if(!validZipCodeCheck()){
         e.preventDefault();
     }
+    
     if(!validCVVCheck()){
         e.preventDefault();
     }
