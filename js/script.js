@@ -194,11 +194,13 @@ function validEmailCheck(){
 
 
 //Register activity helper function
+const activitiesBox = document.querySelectorAll("#activities-box");
+console.log(activitiesBox);
 function validRegisterCheck(){    
     if(total > 0) {
-        validationPass(activitiesField);        
+        validationPass(activitiesBox);        
   }else{
-        validationFail(activitiesField);
+        validationFail(activitiesBox);
 }  
 return total > 0;
 }
@@ -255,7 +257,7 @@ function validCVVCheck(){
 //validation pass helper fuction and loads on page load
 function validationPass(element){
     element.parentElement.classList.add("valid");
-    element.parentElement.classList.remove("not-valid")
+    element.parentElement.classList.remove("not-valid");
     element.parentElement.lastElementChild.style.display = "none";
 }
 
@@ -265,6 +267,7 @@ function validationFail(element){
     element.parentElement.classList.remove("valid");
     element.parentElement.lastElementChild.style.display = "block";
 }
+
 //checks for input in the field and flags a green tick when correct
 nameElement.addEventListener("keyup", validNameCheck);
 emailElement.addEventListener("keyup", validEmailCheck);
