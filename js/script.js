@@ -194,7 +194,7 @@ function validEmailCheck(){
 
 
 //Register activity helper function
-const activitiesBox = document.querySelectorAll("#activities-box");
+const activitiesBox = document.querySelector("#activities-box");
 console.log(activitiesBox);
 function validRegisterCheck(){    
     if(total > 0) {
